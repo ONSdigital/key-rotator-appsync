@@ -6,7 +6,7 @@
 
 ZIPFILE="key-rotator-appsync.zip"
 
-apk install py3-pip
+apk add py3-pip zip
 cd lambda
 pip install --ignore-installed --prefix=./ -r requirements.txt
 cd lib/python3.8/site-packages
