@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # This script runs within the terraform docker image
 # to pull down the required python libraries, ready
 # to be zipped for uploading to AWS
