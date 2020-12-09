@@ -5,6 +5,4 @@ resource "null_resource" "build" {
     interpreter = ["sh"]
     working_dir = path.module
   }
-
-  hash = filebase64sha256("./lambda/key-rotator-appsync.zip")
 }
