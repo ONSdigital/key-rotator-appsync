@@ -5,4 +5,8 @@ resource "null_resource" "build" {
     interpreter = ["sh"]
     working_dir = path.module
   }
+
+  triggers = {
+    "before" = aws_iam_role.sor_appsync_key_rotation_lambda.id
+  }
 }
