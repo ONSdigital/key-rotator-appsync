@@ -58,10 +58,12 @@ resource "aws_iam_role_policy" "sor_appsync_key_rotation_lambda" {
 // The Lambda function
 
 resource "aws_lambda_function" "sor_appsync_key_rotation" {
+  depends_on = [null_resource.build]
+
   function_name = "sor-appsync-key_rotation-${local.environment_name}"
 
-  filename         = "key-rotator-appsync.zip"
-  source_code_hash = filebase64sha256("key-rotator-appsync.zip")
+  filename         = "./lambda/key-rotator-appsync.zip"
+  source_code_hash = filebase64sha256("./lambda/key-rotator-appsync.zip")
 
   runtime = "python3.8"
 
