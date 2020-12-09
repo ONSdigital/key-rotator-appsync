@@ -1,6 +1,18 @@
 //---------------------------------------------------------
 // Role Setup
 
+data "aws_iam_policy_document" "lambda_assume_role" {
+  statement {
+    effect  = "Allow"
+    actions = ["sts:AssumeRole"]
+
+    principals {
+      identifiers = ["lambda.amazonaws.com"]
+      type        = "Service"
+    }
+  }
+}
+
 resource "aws_iam_role" "sor_appsync_key_rotation_lambda" {
   name               = "spp-bw-sor-key_rotation-${local.environment_name}"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
