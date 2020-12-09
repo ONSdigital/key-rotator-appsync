@@ -6,7 +6,5 @@ resource "null_resource" "build" {
     working_dir = path.module
   }
 
-  triggers = {
-    "before" = aws_iam_role.sor_appsync_key_rotation_lambda.id
-  }
+  hash = filebase64sha256("./lambda/key-rotator-appsync.zip")
 }
