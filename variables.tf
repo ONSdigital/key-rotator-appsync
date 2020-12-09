@@ -1,6 +1,10 @@
 data "aws_caller_identity" "current" {
 }
 
+variable "appsync_graphql_api_id" {
+  type = string
+}
+
 locals {
   account_id = data.aws_caller_identity.current.account_id
 

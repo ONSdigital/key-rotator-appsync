@@ -75,7 +75,7 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
     variables = {
       TTL_SECONDS    = "604800" // 86400 is one day in seconds 604800 is a week
       SECRET         = local.key_rotation_secrets_name
-      API_ID         = aws_appsync_graphql_api.sor.id
+      API_ID         = var.appsync_graphql_api_id
       BAW_CONTAINERS = "[]" // JSON formatted list
     }
   }
