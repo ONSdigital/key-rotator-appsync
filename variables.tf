@@ -13,6 +13,8 @@ variable "app" {
 locals {
   account_id = data.aws_caller_identity.current.account_id
 
+  cron_string = "cron(38 17 * * ? *)"
+
   key_rotation_secrets_name = "key_rotation_secrets_${var.app}_${local.environment_name}"
 
   key_rotation_secrets_arn = "arn:aws:secretsmanager:eu-west-2:${local.account_id}:secret:${local.key_rotation_secrets_name}*"

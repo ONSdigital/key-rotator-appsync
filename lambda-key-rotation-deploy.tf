@@ -88,7 +88,7 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
 resource "aws_cloudwatch_event_rule" "appsync_key_rotation_daily" {
   name                = "every-24-hours"
   description         = "Fires every 24 hours"
-  schedule_expression = "cron(38 17 * * ? *)"
+  schedule_expression = local.cron_string
 }
 
 resource "aws_cloudwatch_event_target" "appsync_key_rotation" {
