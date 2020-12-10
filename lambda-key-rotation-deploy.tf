@@ -54,6 +54,11 @@ resource "aws_iam_role_policy" "sor_appsync_key_rotation_lambda" {
   policy = data.aws_iam_policy_document.key_rotation_baw_secret.json
 }
 
+resource "aws_secretsmanager_secret" "key_rotation_secret" {
+  name = local.key_rotation_secrets_name
+  recovery_window_in_days = 0
+}
+
 //---------------------------------------------------------
 // The Lambda function
 
