@@ -15,6 +15,8 @@ locals {
 
   cron_string = "cron(38 17 * * ? *)"
 
+  ttl_seconds = "604800" // 86400 is one day in seconds, 604800 is a week
+
   key_rotation_secrets_name = "key_rotation_secrets_${var.app}_${local.environment_name}"
 
   key_rotation_secrets_arn = "arn:aws:secretsmanager:eu-west-2:${local.account_id}:secret:${local.key_rotation_secrets_name}*"

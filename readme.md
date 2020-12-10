@@ -26,7 +26,7 @@ module "key-rotator" {
 * `appsync_graphql_api_id` - the API id for the AppSync service you wish to rotate keys on.
 * `app` - a short mnemonic label that, along with the terraform workspace (i.e. git branch), forms a unique name for the AWS Secrets Manager secret, with the template `key_rotation_secrets_${var.app}_${local.environment_name}`
 
-You should review the value of the terraform local variable `cron_string` to ensure it will be triggered as you expect.
+You should review the value of the terraform local variable `cron_string` to ensure it will be triggered as you expect, and `ttl_seconds` if you want something other than a one week key lifetime.
 
 ### Secrets
 
