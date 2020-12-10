@@ -26,3 +26,7 @@ locals {
   region = "eu-west-2"
 
 }
+
+output "secret_name" {
+  value = local.key_rotation_secrets_name
+}
