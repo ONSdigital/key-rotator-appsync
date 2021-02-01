@@ -55,7 +55,7 @@ resource "aws_iam_role_policy" "sor_appsync_key_rotation_lambda" {
 }
 
 resource "aws_secretsmanager_secret" "key_rotation_secret" {
-  name = local.key_rotation_secrets_name
+  name                    = local.key_rotation_secrets_name
   recovery_window_in_days = 0
 }
 
@@ -93,7 +93,7 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
 resource "aws_cloudwatch_event_rule" "appsync_key_rotation_daily" {
   name                = "every-24-hours"
   description         = "Fires every 24 hours"
-  schedule_expression = local.cron_string
+  schedule_expression = var.cron_schedule
 }
 
 resource "aws_cloudwatch_event_target" "appsync_key_rotation" {

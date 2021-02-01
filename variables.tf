@@ -10,10 +10,14 @@ variable "app" {
   description = "Mnemonic label for the service you are performing key rotation for, i.e. 'sor'"
 }
 
+variable "cron_schedule" {
+  type        = string
+  description = "Cron schedule expression e.g. 'cron(7 0 * * ? *)'"
+  default     = "cron(7 0 * * ? *)"
+}
+
 locals {
   account_id = data.aws_caller_identity.current.account_id
-
-  cron_string = "cron(38 17 * * ? *)"
 
   ttl_seconds = "604800" // 86400 is one day in seconds, 604800 is a week
 
