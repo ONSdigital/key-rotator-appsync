@@ -16,7 +16,7 @@ It feeds a partner process app in IBM's *Business Automation Workflow* (BAW) tha
 For the service you want to perform key rotation on, you will need to pull this module into the main, AppSync-deploying terraform by including, e.g.
 
 ```hcl
-module "key-rotator" {
+module "key_rotator" {
   source                 = "github.com/ONSdigital/key-rotator-appsync"
   appsync_graphql_api_id = aws_appsync_graphql_api.sor.id
   app                    = "sor"

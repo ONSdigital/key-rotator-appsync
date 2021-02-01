@@ -51,7 +51,7 @@ def lambda_handler(event, context):
                 {
                     "name": "envVarPairs",
                     "data": {"pairs": [{"name": "GRAPHQL_API_KEY", "value": key_id},
-                            {"name": "GRAPHQL_SERVER", "value": as_uri}]},
+                            {"name": "GRAPHQL_ENDPOINT", "value": as_uri}]},
                 },
                 {
                     "name": "targetContainers",
