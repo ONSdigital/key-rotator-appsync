@@ -24,7 +24,7 @@ locals {
 
   key_rotation_secrets_name = "key_rotation_secrets_${var.app}"
 
-  key_rotation_secrets_arn = "arn:aws:secretsmanager:${aws_region.current.name}:${local.account_id}:secret:${local.key_rotation_secrets_name}*"
+  key_rotation_secrets_arn = "arn:aws:secretsmanager:${data.aws_region.current.name}:${local.account_id}:secret:${local.key_rotation_secrets_name}*"
 
 }
 
