@@ -14,7 +14,7 @@ data "aws_iam_policy_document" "lambda_assume_role" {
 }
 
 resource "aws_iam_role" "sor_appsync_key_rotation_lambda" {
-  name               = "spp-bw-sor-key_rotation-${local.environment_name}"
+  name               = "appsync-key_rotation-${var.app}"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role.json
 }
 
@@ -65,7 +65,7 @@ resource "aws_secretsmanager_secret" "key_rotation_secret" {
 resource "aws_lambda_function" "sor_appsync_key_rotation" {
   depends_on = [null_resource.build]
 
-  function_name = "sor-appsync-key_rotation-${local.environment_name}"
+  function_name = "appsync-key_rotation-${var.app}"
 
   filename = "${path.module}/lambda/key-rotator-appsync.zip"
   source_code_hash = uuid()
@@ -92,8 +92,8 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
 // CloudWatch Event (the scheduler)
 
 resource "aws_cloudwatch_event_rule" "appsync_key_rotation_daily" {
-  name                = "every-24-hours"
-  description         = "Fires every 24 hours"
+  name                = "key_rotation-${var.app}"
+  description         = "Executes key rotation lambda on a schedule"
   schedule_expression = var.cron_schedule
 }
 

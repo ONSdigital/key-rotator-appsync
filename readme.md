@@ -24,7 +24,7 @@ module "key_rotator" {
 ```
 
 * `appsync_graphql_api_id` - the API id for the AppSync service you wish to rotate keys on.
-* `app` - a short mnemonic label that, along with the terraform workspace (i.e. git branch), forms a unique name for the AWS Secrets Manager secret, with the template `key_rotation_secrets_${var.app}_${local.environment_name}`
+* `app` - a short mnemonic label that (i.e. with git branch), forms a unique name for the AWS Secrets Manager secret within the deployment account/environment, with the template `key_rotation_secrets_${var.app}`
 
 You should review the value of the terraform local variable `cron_string` to ensure it will be triggered as you expect, and `ttl_seconds` if you want something other than a one week key lifetime.
 
@@ -37,4 +37,4 @@ The more sensitive configuration items are drawn from the AWS Secrets Manager se
 
 ### Post-deployment
 
-After deployment, you will need to edit the lambda's `BAW_CONTAINERS` environment variable to be a JSON list of strings of the BAW containers that you wish to update
+After deployment, you will need to edit the lambda's `BAW_CONTAINERS` environment variable to be a JSON list of strings of the BAW containers that you wish to update, e.g. `["EXAMPLE", "FINANCE"]`. This must be a subset of the PermittedContainers EPV associated with the BAW process app, or the request will be rejected.
