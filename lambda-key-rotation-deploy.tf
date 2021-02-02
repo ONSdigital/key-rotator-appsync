@@ -67,7 +67,7 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
 
   function_name = "appsync-key_rotation-${var.app}"
 
-  filename = "${path.module}/lambda/key-rotator-appsync.zip"
+  filename         = "${path.module}/lambda/key-rotator-appsync.zip"
   source_code_hash = uuid()
 
   runtime = "python3.8"

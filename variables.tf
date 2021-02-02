@@ -1,5 +1,6 @@
-data "aws_caller_identity" "current" {
-}
+data "aws_caller_identity" "current" {}
+
+data "aws_region" "current" {}
 
 variable "appsync_graphql_api_id" {
   type = string
@@ -23,9 +24,7 @@ locals {
 
   key_rotation_secrets_name = "key_rotation_secrets_${var.app}"
 
-  key_rotation_secrets_arn = "arn:aws:secretsmanager:${local.region}:${local.account_id}:secret:${local.key_rotation_secrets_name}*"
-
-  region = provider.aws.region
+  key_rotation_secrets_arn = "arn:aws:secretsmanager:${aws_region.current.name}:${local.account_id}:secret:${local.key_rotation_secrets_name}*"
 
 }
 
