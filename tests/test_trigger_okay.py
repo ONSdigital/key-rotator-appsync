@@ -36,6 +36,7 @@ def test_trigger_okay(sm):
             f"{secrets['BASE_URL']}/bpm/processes?model=UpdateEnvironmentVar&container=SPPEU",
             status_code=201,
         )
+        key_rotate(mock_appsync, env)
         # If no exception raised, we're good, test passed
 
 
