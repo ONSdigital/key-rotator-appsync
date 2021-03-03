@@ -38,3 +38,13 @@ The more sensitive configuration items are drawn from the AWS Secrets Manager se
 ### Post-deployment
 
 After deployment, you will need to edit the lambda's `BAW_CONTAINERS` environment variable to be a JSON list of strings of the BAW containers that you wish to update, e.g. `["EXAMPLE", "FINANCE"]`. This must be a subset of the PermittedContainers EPV associated with the BAW process app, or the request will be rejected.
+
+## Running tests
+
+### Prerequisities
+
+Run `pipenv install --dev` from the base repo directory.
+
+### Test suite
+
+Run `pipenv run pytest tests` from the base repo directory.
