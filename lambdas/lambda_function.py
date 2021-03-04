@@ -20,7 +20,7 @@ def lambda_handler(event, context):
         "apiId": getenv("API_ID"),
         "secret": getenv("SECRET"),
     }
-    key_rotate(boto3.client("appsync"))
+    key_rotate(boto3.client("appsync"), env)
 
 
 def key_rotate(appsync_client, env):
