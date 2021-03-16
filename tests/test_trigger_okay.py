@@ -7,7 +7,13 @@ import os
 
 from lambdas.lambda_function import key_rotate
 
-secrets = {"BASE_URL": "https://example.com", "BPM_USER": "", "BPM_PW": ""}
+secrets = {
+    "BASE_URL": "https://example.com",
+    "BPM_USER": "",
+    "BPM_PW": "",
+    "BAW_CONTAINERS": ["TEST"],
+}
+
 
 @pytest.fixture(scope="function")
 def sm():
@@ -20,7 +26,6 @@ def sm():
 def test_trigger_okay(sm):
     sm.create_secret(Name="secret", SecretString=json.dumps(secrets))
     env = {
-        "containers": '["BS"]',
         "ttl_seconds": "600000",
         "default_only": "FALSE",
         "apiId": "fake",

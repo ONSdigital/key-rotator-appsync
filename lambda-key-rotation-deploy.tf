@@ -80,10 +80,9 @@ resource "aws_lambda_function" "sor_appsync_key_rotation" {
 
   environment {
     variables = {
-      TTL_SECONDS    = local.ttl_seconds
-      SECRET         = local.key_rotation_secrets_name
-      API_ID         = var.appsync_graphql_api_id
-      BAW_CONTAINERS = "[]" // JSON formatted list
+      TTL_SECONDS = local.ttl_seconds
+      SECRET      = local.key_rotation_secrets_name
+      API_ID      = var.appsync_graphql_api_id
     }
   }
 }
