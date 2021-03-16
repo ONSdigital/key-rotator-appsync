@@ -34,10 +34,7 @@ The more sensitive configuration items are drawn from the AWS Secrets Manager se
 
 * `BPM_USER` and `BPM_PW` - the username and password for the BAW service user that has permissions to start the environment variable updater process app.
 * `BASE_URL` - the first part of the URL for the REST requests. It has the form `https://HOSTNAME/dba/ENVIRONMENT` with no trailing slash.
-
-### Post-deployment
-
-After deployment, you will need to edit the lambda's `BAW_CONTAINERS` environment variable to be a JSON list of strings of the BAW containers that you wish to update, e.g. `["EXAMPLE", "FINANCE"]`. This must be a subset of the PermittedContainers EPV associated with the BAW process app, or the request will be rejected.
+* `BAW_CONTAINERS` - a JSON list of BAW container acronyms that will be targeted for updating. This must be a subset of the PermittedContainers EPV associated with the BAW process app, or the request will be rejected.
 
 ## Running tests
 
