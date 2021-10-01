@@ -9,7 +9,7 @@ ZIPFILE="key-rotator-appsync.zip"
 apk add py3-pip zip
 cd lambdas
 pip install --ignore-installed --prefix=./ -r requirements.txt
-cd lib/python3.9/site-packages
+cd lib/python3.?/site-packages
 zip -qr $OLDPWD/$ZIPFILE ./*
 cd $OLDPWD
 zip -jg $ZIPFILE ../lambdas/*
