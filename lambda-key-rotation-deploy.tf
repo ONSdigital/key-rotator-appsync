@@ -41,7 +41,9 @@ data "aws_iam_policy_document" "key_rotation_baw_secret" {
     effect = "Allow"
     actions = [
       "appsync:CreateApiKey",
-      "appsync:GetGraphqlApi"
+      "appsync:GetGraphqlApi",
+      "appsync:ListApiKeys",
+      "appsync:DeleteApiKey"
     ]
     resources = [
       "*"
